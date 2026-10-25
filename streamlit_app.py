@@ -1,7 +1,6 @@
-
 import streamlit as st
 import whisper
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 import asyncio
 import edge_tts
 import subprocess
@@ -28,8 +27,7 @@ if uploaded_file is not None:
         st.write("Original Dialogues:", original_text)
         
         st.info("🌐 Hindi me translate ho raha hai...")
-        translator = Translator()
-        hindi_text = translator.translate(original_text, dest='hi').text
+        hindi_text = GoogleTranslator(source='auto', target='hi').translate(original_text)
         st.write("Hindi Dialogues:", hindi_text)
         
         st.info("🗣️ Hindi AI Voice create ho rahi hai...")
